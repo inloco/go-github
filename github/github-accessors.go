@@ -13332,6 +13332,30 @@ func (t *TemplateRepoRequest) GetPrivate() bool {
 	return *t.Private
 }
 
+// GetToken returns the Token field if it's non-nil, zero value otherwise.
+func (t *TenantCredential) GetToken() string {
+	if t == nil || t.Token == nil {
+		return ""
+	}
+	return *t.Token
+}
+
+// GetTokenSchema returns the TokenSchema field if it's non-nil, zero value otherwise.
+func (t *TenantCredential) GetTokenSchema() string {
+	if t == nil || t.TokenSchema == nil {
+		return ""
+	}
+	return *t.TokenSchema
+}
+
+// GetURL returns the URL field if it's non-nil, zero value otherwise.
+func (t *TenantCredential) GetURL() string {
+	if t == nil || t.URL == nil {
+		return ""
+	}
+	return *t.URL
+}
+
 // GetFragment returns the Fragment field if it's non-nil, zero value otherwise.
 func (t *TextMatch) GetFragment() string {
 	if t == nil || t.Fragment == nil {

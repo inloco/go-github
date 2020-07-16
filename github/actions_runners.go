@@ -275,3 +275,39 @@ func (s *ActionsService) RemoveOrganizationRunner(ctx context.Context, owner str
 
 	return s.client.Do(ctx, req, nil)
 }
+
+// TenantCredential
+type TenantCredential struct {
+	Token       *string `json:"token"`
+	TokenSchema *string `json:"token_schema"`
+	URL         *string `json:"url"`
+}
+
+// createUserRequest
+type createTenantCredentialRequest struct {
+	RunnerEvent *string `json:"runner_event,omitempty"`
+	URL         *string `json:"url,omitempty"`
+}
+
+// CreateTenantCredential
+func (s *ActionsService) CreateTenantCredential(ctx context.Context, runnerEvent, url string) (*TenantCredential, *Response, error) {
+	u := "actions/runner-registration"
+
+	tenantCredentialRequest := &createTenantCredentialRequest{
+		RunnerEvent: &runnerEvent,
+		URL:         &url,
+	}
+
+	req, err := s.client.NewRequest("POST", u, tenantCredentialRequest)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	var tenantCredential TenantCredential
+	resp, err := s.client.Do(ctx, req, &tenantCredential)
+	if err != nil {
+		return nil, resp, err
+	}
+
+	return &tenantCredential, resp, nil
+}
