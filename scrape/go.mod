@@ -7,5 +7,5 @@ require (
 	github.com/google/go-cmp v0.3.1
 	github.com/google/go-github/v28 v28.1.1
 	github.com/xlzd/gotp v0.0.0-20181030022105-c8557ba2c119
-	golang.org/x/net v0.17.0
+	golang.org/x/net v0.23.0
 )
